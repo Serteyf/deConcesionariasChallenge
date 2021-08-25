@@ -2,10 +2,11 @@ const { Vehicle } = require("../../database/models")
 
 const vehiclesController = {
     // Show all vehicles
-    list: async (req, res) => {
+    getAll: async (req, res) => {
         const listVehicles = await Vehicle.findAll()
         res.json({
             meta: {
+                status: 200,
                 count: listVehicles.length,
                 url: "/api/vehicles"
             },
