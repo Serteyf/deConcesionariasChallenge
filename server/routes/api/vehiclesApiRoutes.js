@@ -3,9 +3,11 @@ const router = express.Router();
 
 const vehiclesApiController = require("../../controllers/api/vehiclesApiController");
 
-router.get("/", vehiclesApiController.getAll);
+router.get("/index", vehiclesApiController.getAll);
+router.get("/index/:id", vehiclesApiController.getOne);
 router.post("/add", vehiclesApiController.add);
-router.put("/edit", vehiclesApiController.edit);
-router.delete("/delete", vehiclesApiController.delete);
+router.put("/edit/:id", vehiclesApiController.edit);
+router.delete("/delete:id?", vehiclesApiController.delete);
 
 module.exports = router;
+

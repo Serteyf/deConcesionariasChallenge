@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, dataTypes) => {
-    const Category = sequelize.define("Category", {
+    const Category = sequelize.define("category", {
         id: {
           type: dataTypes.INTEGER,
           primaryKey: true,
@@ -16,7 +16,7 @@ module.exports = (sequelize, dataTypes) => {
     });
 
     Category.associate = (models) => {
-        Category.hasMany(models.Property, { as: "properties" });
+        Category.hasMany(models.property, { as: "properties" });
     };
 
     return Category;

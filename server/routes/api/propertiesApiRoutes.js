@@ -3,9 +3,10 @@ const router = express.Router();
 
 const propertiesApiController = require("../../controllers/api/propertiesApiController");
 
-router.get("/", propertiesApiController.list);
+router.get("/index", propertiesApiController.getAll);
+router.get("/index/:id", propertiesApiController.getOne);
 router.post("/add", propertiesApiController.add);
-router.put("/edit", propertiesApiController.edit);
-router.delete("/delete", propertiesApiController.delete);
+router.put("/edit/:id", propertiesApiController.edit);
+router.delete("/delete/:id?", propertiesApiController.delete);
 
 module.exports = router;
