@@ -1,9 +1,15 @@
 const propertyService = require("../../services/propertyService")
+const { category, property } = require("../../database/models")
 
 const propertiesController = {
     // Show all properties
     getAll: async (req, res) => {
-        const allProperties = await propertyService.findAll();
+        const allProperties = await property.findAll(
+            {
+                include: ["category"],
+                order: [["categoryId", "DESC"]],
+            }
+        );
 
         res.json({
             meta: {
@@ -12,6 +18,18 @@ const propertiesController = {
                 url: "/api/properties/index"
             },
             data: allProperties
+        })
+    },
+    getAllCategories: async (req, res) => {
+        const allCategories = await category.findAll();
+
+        res.json({
+            meta: {
+                status: 200,
+                count: allCategories.length,
+                url: "/api/properties/index"
+            },
+            data: allCategories
         })
     },
     // Get one property
@@ -30,6 +48,7 @@ const propertiesController = {
     // Add a property
     add: async (req, res) => {
         const _body = {
+            id: null,
             name: req.body.name,
             categoryId: req.body.categoryId
         }

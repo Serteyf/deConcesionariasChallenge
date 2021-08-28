@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = (sequelize, dataTypes) => {
     const Category = sequelize.define("category", {
         id: {
@@ -15,8 +16,8 @@ module.exports = (sequelize, dataTypes) => {
         underscored: false
     });
 
-    Category.associate = (models) => {
-        Category.hasMany(models.property, { as: "properties" });
+    Category.associate = ( {property} ) => {
+        Category.hasMany(property, { as: "properties" });
     };
 
     return Category;

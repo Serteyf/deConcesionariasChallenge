@@ -19,12 +19,12 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: false,
         underscored: false
     });
-    Property.associate = (models) => {
-        Property.belongsTo(models.category, {
+    Property.associate = ( {category, vehicle} ) => {
+        Property.belongsTo(category, {
             as: "category",
             foreignKey: "categoryId"
         });
-        Property.belongsToMany(models.vehicle, {
+        Property.belongsToMany(vehicle, {
             as: "vehicles",
             through: "VehicleProperties",
             foreignKey: "propertyId"

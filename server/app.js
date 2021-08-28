@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const cors = require("cors");
 const methodOverride = require("method-override");
 
 const app = express()
@@ -10,6 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(methodOverride("_method"));
+app.use(cors());
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

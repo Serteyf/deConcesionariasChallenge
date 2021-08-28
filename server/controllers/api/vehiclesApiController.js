@@ -1,9 +1,14 @@
-const vehicleService = require("../../services/vehicleService")
+const vehicleService = require("../../services/vehicleService");
+const { vehicle } = require("../../database/models")
 
 const vehiclesController = {
     // Show all vehicles
     getAll: async (req, res) => {
-        const allVehicles = await vehicleService.findAll();
+        const allVehicles = await vehicle.findAll(
+            {
+                include: ["properties"]
+            }
+        );
 
         res.json({
             meta: {

@@ -4,9 +4,6 @@ module.exports = {
     findOne: async (id) => {
         return await property.findByPk(id);
     },
-    findAll: async () => {
-        return await property.findAll();
-    },
     create: async (attributes) => {
         return await property.create(
             attributes
