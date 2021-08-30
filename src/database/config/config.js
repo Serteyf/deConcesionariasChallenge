@@ -26,6 +26,6 @@ module.exports = {
     "database": "deConcesionarias_prod",
     "host": DB_HOST,
     "dialect": "postgres",
-    "use_env_variable": DATABASE_URL
+    "use_env_variable": process.env.DATABASE_URL
   },
 }
