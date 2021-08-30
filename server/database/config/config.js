@@ -8,7 +8,10 @@ module.exports = {
     "password": DB_PASSWORD,
     "database": "deConcesionarias_dev",
     "host": DB_HOST,
-    "dialect": "postgres"
+    "dialect": "postgres",
+    define: {
+      timestamps: false
+    }
   },
   "test": {
     "username": DB_USERNAME,

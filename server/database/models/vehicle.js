@@ -16,11 +16,16 @@ module.exports = (sequelize, dataTypes) => {
       timestamps: false,
       underscored: false
   });
-  Vehicle.associate = (models) => {
-      Vehicle.belongsToMany(models.property, {
+  Vehicle.associate = ({property, vehicle_property}) => {
+      Vehicle.belongsToMany(property, {
           as: "properties",
-          through: "VehicleProperties",
-          foreignKey: "vehicleId"
+          through: vehicle_property,
+          foreignKey: {
+              name: "vehicleId", 
+              allowNull: true
+          },
+          onDelete: 'CASCADE',
+          hooks: true
       })
   };
   return Vehicle;

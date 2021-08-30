@@ -1,15 +1,10 @@
 const propertyService = require("../../services/propertyService")
-const { category, property } = require("../../database/models")
+const { category } = require("../../database/models")
 
 const propertiesController = {
     // Show all properties
     getAll: async (req, res) => {
-        const allProperties = await property.findAll(
-            {
-                include: ["category"],
-                order: [["categoryId", "DESC"]],
-            }
-        );
+        const allProperties = await propertyService.findAll();
 
         res.json({
             meta: {
@@ -47,13 +42,7 @@ const propertiesController = {
     },
     // Add a property
     add: async (req, res) => {
-        const _body = {
-            id: null,
-            name: req.body.name,
-            categoryId: req.body.categoryId
-        }
-
-        const createProperty = await propertyService.create(_body)
+        const createProperty = await propertyService.create({...req.body})
         res.json({
             meta: {
                 status: 200,
@@ -64,11 +53,7 @@ const propertiesController = {
     },
     // Edit a property
     edit: async (req, res) => {
-        const _body = {
-            name: req.body.name,
-            categoryId: req.body.categoryId
-        }
-        await propertyService.update(req.params.id, _body)
+        await propertyService.update(req.params.id, req.body)
         res.json({
             meta: {
                 status: 200,
@@ -80,7 +65,7 @@ const propertiesController = {
     },
     // Delete a property
     delete: async (req, res) => {
-        await propertyService.destroy(req.params.id);
+        await propertyService.delete(req.params.id);
 
         res.json({
         meta: {

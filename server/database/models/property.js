@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, dataTypes) => {
-  const Property = sequelize.define("property", {
+  const Property = sequelize.define(
+      "property", {
       id: {
           type: dataTypes.INTEGER,
           primaryKey: true,
@@ -19,15 +20,24 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: false,
         underscored: false
     });
-    Property.associate = ( {category, vehicle} ) => {
+    Property.associate = ( {category, vehicle, vehicle_property} ) => {
         Property.belongsTo(category, {
             as: "category",
-            foreignKey: "categoryId"
+            foreignKey: {
+                name: "categoryId",
+                allowNull: true
+            },
+            
         });
         Property.belongsToMany(vehicle, {
             as: "vehicles",
-            through: "VehicleProperties",
-            foreignKey: "propertyId"
+            through: vehicle_property,
+            foreignKey: {
+                name: "propertyId",
+                allowNull: true
+            },
+            onDelete: 'cascade',
+            hooks: true
         })
     };
   return Property;

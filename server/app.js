@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(methodOverride("_method"));
-app.use(cors());
+app.use(cors('no-cors'));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
@@ -24,6 +24,5 @@ app.use("/api/vehicles", vehiclesApiRoutes);
 app.use("/api/properties", propertiesApiRoutes);
 
 app.get('/', async (req, res) => {
-  const cat = await Category.findAll();
-  res.send(cat)
+  res.send("Server side")
 })

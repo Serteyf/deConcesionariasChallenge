@@ -13,7 +13,8 @@ module.exports = {
       },
       propertyId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
+        onDelete: 'CASCADE',
         references: {
           model: 'Properties',
           key: 'id'
@@ -21,20 +22,20 @@ module.exports = {
       },
       vehicleId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'Vehicles',
           key: 'id'
         }
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+    //   createdAt: {
+    //     allowNull: false,
+    //     type: Sequelize.DATE
+    //   },
+    //   updatedAt: {
+    //     allowNull: false,
+    //     type: Sequelize.DATE
+    //   }
     });
   },
   down: async (queryInterface, Sequelize) => {

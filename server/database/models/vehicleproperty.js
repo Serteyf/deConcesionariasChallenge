@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, dataTypes) => {
-  const VehicleProperty = sequelize.define("vehicleProperty", {
+  const VehicleProperty = sequelize.define(
+      "vehicle_property", {
       id: {
           type: dataTypes.INTEGER,
           primaryKey: true,
@@ -24,9 +25,23 @@ module.exports = (sequelize, dataTypes) => {
       timestamps: false,
       underscored: false
   });
-  VehicleProperty.associate = (models) => {
-    VehicleProperty.belongsTo(models.property, {foreignKey: 'propertyId'})
-    VehicleProperty.belongsTo(models.vehicle, {foreignKey: 'vehicleId'})
+  VehicleProperty.associate = ({ property, vehicle }) => {
+    VehicleProperty.belongsTo(property, {
+        foreignKey: {
+            name: 'propertyId',
+            allowNull: true
+        },
+        hooks: true,
+        onDelete: 'cascade'
+    })
+    VehicleProperty.belongsTo(vehicle, {
+        foreignKey: {
+            name: 'vehicleId',
+            allowNull: true
+        },
+        hooks: true,
+        onDelete: 'cascade'
+    })
   };
   
   return VehicleProperty;
