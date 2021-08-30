@@ -16,7 +16,7 @@ function EditProperty( {properties} ){
         e.preventDefault();
         try {
             const body = { name, categoryId };
-            await fetch(`http://localhost:3000/api/properties/edit/${properties.id}`, {
+            await fetch(`/api/properties/edit/${properties.id}`, {
                 method: "PUT",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
@@ -31,7 +31,7 @@ function EditProperty( {properties} ){
 
     useEffect(() => {
         const fetchCategories = async() => {
-            const blob = await fetch("http://localhost:3000/api/properties/categories");
+            const blob = await fetch("/api/properties/categories");
             const response = await blob.json();
             const categoriesData = await response.data;
             

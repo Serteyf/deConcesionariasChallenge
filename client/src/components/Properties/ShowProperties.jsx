@@ -10,7 +10,7 @@ function ShowProperties(){
     console.log('propertiesData:', propertiesData)
 
     const fetchProperties = async() => {
-        const blob = await fetch("http://localhost:3000/api/properties/index");
+        const blob = await fetch("/api/properties/index");
         const response = await blob.json();
         const propertiesData = await response.data;
 
@@ -23,7 +23,7 @@ function ShowProperties(){
     }, []);
     const deleteProperty = async (id) => {
         try {
-            await fetch(`http://localhost:3000/api/properties/delete/${id}`, {
+            await fetch(`/api/properties/delete/${id}`, {
                 method: "DELETE"
             })
             window.location.reload()

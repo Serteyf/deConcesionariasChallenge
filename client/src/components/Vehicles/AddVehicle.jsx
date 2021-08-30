@@ -8,7 +8,7 @@ const AddVehicle = () => {
         e.preventDefault();
         try {
             const _setProperties = async (id) => {
-                await fetch(`http://localhost:3000/api/vehicles/${id}`, {
+                await fetch(`/api/vehicles/${id}`, {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({ name: vehicleName })

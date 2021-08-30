@@ -10,7 +10,7 @@ export default function Dashboard(){
     const [vehicles, setVehicles] = useState( [] );
 
     const fetchVehicles = async() => {
-        const blob = await fetch("http://localhost:3000/api/vehicles/index");
+        const blob = await fetch("/api/vehicles/index");
         const response = await blob.json();
         const vehiclesData = await response.data;
 
@@ -22,7 +22,7 @@ export default function Dashboard(){
     }, [])
 
     const fetchCategories = async() => {
-        const blob = await fetch("http://localhost:3000/api/properties/categories");
+        const blob = await fetch("/api/properties/categories");
         const response = await blob.json();
         const data = response.data;
 

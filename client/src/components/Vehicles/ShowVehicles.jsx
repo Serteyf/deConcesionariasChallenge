@@ -8,7 +8,7 @@ function ShowVehicles(){
 
 
     const getVehicles = async() => {
-        const blob = await fetch("http://localhost:3000/api/vehicles/index");
+        const blob = await fetch("/api/vehicles/index");
         const response = await blob.json();
         const vehiclesData = await response.data;
 
@@ -22,7 +22,7 @@ function ShowVehicles(){
 
     const deleteVehicle = async (id) => {
         try {
-            await fetch(`http://localhost:3000/api/vehicles/delete/${id}`, {
+            await fetch(`/api/vehicles/delete/${id}`, {
                 method: "DELETE"
             })
             window.location.reload()

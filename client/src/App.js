@@ -25,6 +25,7 @@ class App extends React.Component {
           <Route path="/vehicles/:id/dashboard" component={Dashboard}/>
           
           <Route exact path="/" component={HomeScreen} />
+          <Route path="*" component={HomeScreen} />
         </Switch>
       </Router>
     );

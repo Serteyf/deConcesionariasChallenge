@@ -6,7 +6,7 @@ export default function PropsTable(props){
     const [value, setValue] = useState(  );
 
     const fetchVehicles = async() => {
-        const blob = await fetch("http://localhost:3000/api/vehicles/index");
+        const blob = await fetch("/api/vehicles/index");
         const response = await blob.json();
         const vehiclesData = await response.data;
         setVehicles(vehiclesData);
@@ -20,7 +20,7 @@ export default function PropsTable(props){
         try {
             setValue(new_rating)
             const body = { value: value, jointTableId: jointTableId, vehicleId: vehicleId};
-            await fetch(`http://localhost:3000/api/vehicles/rate/${vehicleId}`, {
+            await fetch(`/api/vehicles/rate/${vehicleId}`, {
                 method: "PUT",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)

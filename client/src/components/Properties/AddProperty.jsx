@@ -18,7 +18,7 @@ const AddProperty = () => {
             e.preventDefault()
             try {
                 const body = { name:propName, categoryId:categoryId };
-                await fetch("http://localhost:3000/api/properties/add", {
+                await fetch("/api/properties/add", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify(body)
@@ -31,7 +31,7 @@ const AddProperty = () => {
     }
 
     const fetchCategories = async() => {
-        const blob = await fetch("http://localhost:3000/api/properties/categories");
+        const blob = await fetch("/api/properties/categories");
         const response = await blob.json();
         const categoriesData = await response.data;
         
