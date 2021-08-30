@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require("cors");
 const path = require("path");
 const methodOverride = require("method-override");
+require('dotenv').config()
 
 const app = express()
 const port = process.env.PORT || 3000
