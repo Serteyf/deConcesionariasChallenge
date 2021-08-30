@@ -65,17 +65,17 @@ const vehiclesController = {
         })
     },
     saveValue: async(req, res) => {
-        // const properties = await vehicleService.findAll(); // find current vehicle
         // console.log('properties:', properties)
         // console.log('jointTable:', jointTable.propertyId)
         // && properties[joinTable.vehicleId] === joinTable.vehicleId
         const vehicle = await vehicleService.findOne(req.body.vehicleId); // find current vehicle
         const jointTable = await vehicle_property.findByPk(req.body.jointTableId); // find join table that matches the current vehicle
+        const properties = await vehicleService.findAll({
+            where: jointTable.propertyId
+        }); // find current vehicle
         if(vehicle.id === jointTable.dataValues.vehicleId ){ // if vehicles id from current vehicle + vehicle in join table match
-            await vehicle.addProperty(jointTable.propertyId, { // ?? NOT SURE
-                through: {
-                    value: req.body.value, // Add value
-                },
+            await vehicle.addProperty(properties.id, { // ?? NOT SURE
+                through: {value: req.body.value},
             });
         }
 
@@ -91,11 +91,7 @@ const vehiclesController = {
         const newVehicle = await vehicleService.create({...req.body});
         const vehicle = await vehicleService.findOne(newVehicle.id);
         const properties = await propertyService.findAll();
-        await vehicle.setProperties(properties, {
-            through: {
-                value: 0 ,
-            },
-        });
+        await vehicle.setProperties(properties);
         res.json({
             meta: {
                 status: 200,

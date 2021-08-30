@@ -1,5 +1,6 @@
 const propertyService = require("../../services/propertyService")
-const { category } = require("../../database/models")
+const vehicleService = require("../../services/vehicleService");
+const { category } = require("../../database/models");
 
 const propertiesController = {
     // Show all properties
@@ -40,15 +41,19 @@ const propertiesController = {
         })
 
     },
+
+
     // Add a property
     add: async (req, res) => {
-        const createProperty = await propertyService.create({...req.body})
+        const newProperty = await propertyService.create({...req.body})
+        const property = await propertyService.findOne(newProperty.id)
+        const vehicles = await vehicleService.findAll()
+        await property.addVehicles(vehicles)
         res.json({
             meta: {
                 status: 200,
-                url: '/api/properties/add'
             },
-        data: createProperty
+        data: ''
         })
     },
     // Edit a property
