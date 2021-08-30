@@ -14,3 +14,7 @@ dentro de una categoría y las mismas se usan en la aplicación para separar las
 
 > Repositorio: https://github.com/Serteyf/deConcesionariasChallenge
 > Domain: 
+
+Missing functionalities:
+- Correcto manejo del rating
+- Validacion para agregar propiedades y vehiculos

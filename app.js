@@ -4,7 +4,6 @@ const methodOverride = require("method-override");
 
 const app = express()
 const port = process.env.PORT
-const { Category } = require("./database/models")
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
@@ -18,8 +17,8 @@ app.listen(port, () => {
 })
 
 //Routes
-const vehiclesApiRoutes = require("./routes/api/vehiclesApiRoutes");
-const propertiesApiRoutes = require("./routes/api/propertiesApiRoutes");
+const vehiclesApiRoutes = require("./src/routes/api/vehiclesApiRoutes");
+const propertiesApiRoutes = require("./src/routes/api/propertiesApiRoutes");
 app.use("/api/vehicles", vehiclesApiRoutes);
 app.use("/api/properties", propertiesApiRoutes);
 

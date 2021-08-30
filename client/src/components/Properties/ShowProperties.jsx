@@ -35,7 +35,7 @@ function ShowProperties(){
     return(
         <div sm={3} className="container d-flex justify-content-center text-center flex-wrap">
             {isLoading ?? <p>Cargando...</p>}
-            {propertiesData.length < 0 && isLoading === false ? 
+            {propertiesData.length === 0 && isLoading === false ? 
                 <div>
                     <p>Oops... no hay ninguna propiedad en la base de datos</p>
                     <Nav.Link href="/properties/add">Agregá una propiedad</Nav.Link>
@@ -49,7 +49,7 @@ function ShowProperties(){
                             </div>
                             <div style={{height: '25%'}} className="d-flex w-100 justify-content-evenly">
                                 <EditProperty properties={data} defaultSelect={data.name}/>
-                                <Button as="button" type="submit" onClick={()=> {if(window.confirm("Are you sure you want to delete this?"))  deleteProperty(data.id)}} style={{width: '6vw'}} className="btn btn-danger">Delete</Button>
+                                <Button as="button" type="submit" onClick={()=> {if(window.confirm("Seguro/a que queres borrar esto?"))  deleteProperty(data.id)}} style={{width: '6vw'}} className="btn btn-danger">Delete</Button>
                             </div>
                         </Card.Body>
                     </Card>
