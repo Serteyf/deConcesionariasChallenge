@@ -1,0 +1,11 @@
+.link1{
+    display: inline!important;
+    padding: 0!important
+}
+
+.nav1{
+    padding: inherit!important;
+    flex-direction: column!important;
+    align-content: center!important;
+    text-align: center;
+}
