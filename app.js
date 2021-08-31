@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require("cors");
 const path = require("path");
 const methodOverride = require("method-override");
-import pingmydyno from 'pingmydyno';
+const pingmydyno = require('pingmydyno')
 require('dotenv').config()
 
 const app = express()
