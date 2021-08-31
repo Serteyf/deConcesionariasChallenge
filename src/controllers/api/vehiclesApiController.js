@@ -72,9 +72,9 @@ const vehiclesController = {
         const jointTable = await vehicle_property.findByPk(req.body.jointTableId); // find join table that matches the current vehicle
         const properties = await vehicleService.findAll({
             where: jointTable.propertyId
-        }); // find current vehicle
+        }); 
         if(vehicle.id === jointTable.dataValues.vehicleId ){ // if vehicles id from current vehicle + vehicle in join table match
-            await vehicle.addProperty(properties.id, { // ?? NOT SURE
+            await vehicle.addProperty(properties.id, { // 
                 through: {value: req.body.value},
             });
         }

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactStars from 'react-stars';
 
 export default function PropsTable(props){
@@ -29,9 +29,6 @@ export default function PropsTable(props){
             console.error(err.message)
         }
     }
-    // useEffect(() => {
-    //     handleChange()
-    // }, [])
 
     return(
         <div className='container'>

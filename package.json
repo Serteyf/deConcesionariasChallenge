@@ -28,6 +28,7 @@
     "patch-package": "^6.4.7",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
+    "pingmydyno": "^1.5.1",
     "sequelize": "^6.6.5"
   },
   "devDependencies": {
