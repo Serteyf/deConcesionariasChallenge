@@ -26,11 +26,12 @@ const vehiclesApiRoutes = require("./src/routes/api/vehiclesApiRoutes");
 const propertiesApiRoutes = require("./src/routes/api/propertiesApiRoutes");
 app.use("/api/vehicles", vehiclesApiRoutes);
 app.use("/api/properties", propertiesApiRoutes);
-
+app.use('/manifest.json', express.static(path.join(__dirname, "client/build/manifest.json")));
+app.get('/', async (req, res) => {
+  res.send("hello world")
+  console.log('process.env.DATABASE_URL:', process.env.DATABASE_URL)
+})
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build/index.html'))
-})
-app.get('/', async (req, res) => {
-  res.send("Server side")
 })
 
