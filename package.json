@@ -14,7 +14,7 @@
     "db:migrate": "sequelize-cli db:migrate",
     "db:g:seed": "sequelize-cli seed:generate --name",
     "start": "set NODE_ENV=production&& node app.js",
-    "heroku-postbuild": "cd client $$ npm install $$ npm run build",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "postinstall": "patch-package"
   },
   "keywords": [],

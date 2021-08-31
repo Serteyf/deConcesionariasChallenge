@@ -11,6 +11,7 @@ function ShowVehicles(){
         const blob = await fetch("/api/vehicles/index");
         const response = await blob.json();
         const vehiclesData = await response.data;
+        console.log('vehiclesData:', vehiclesData)
 
         setVehicleData(vehiclesData);
         setIsLoading(false)
