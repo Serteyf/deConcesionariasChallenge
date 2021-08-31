@@ -30,6 +30,7 @@ app.use('/manifest.json', express.static(path.join(__dirname, "client/build/mani
 app.get('/', async (req, res) => {
   res.send("hello world")
   console.log('process.env.DATABASE_URL:', process.env.DATABASE_URL)
+  console.log(process.env.NODE_ENV);
 })
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build/index.html'))
