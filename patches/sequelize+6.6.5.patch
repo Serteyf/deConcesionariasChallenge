@@ -1,0 +1,13 @@
+diff --git a/node_modules/sequelize/lib/sequelize.js b/node_modules/sequelize/lib/sequelize.js
+index b074bee..3e64c7a 100644
+--- a/node_modules/sequelize/lib/sequelize.js
++++ b/node_modules/sequelize/lib/sequelize.js
+@@ -182,7 +182,7 @@ class Sequelize {
+       config = {};
+       options = username || {};
+ 
+-      const urlParts = url.parse(arguments[0], true);
++      const urlParts = url.parse(options.use_env_variables, true);
+ 
+       options.dialect = urlParts.protocol.replace(/:$/, '');
+       options.host = urlParts.hostname;
