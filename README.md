@@ -1,7 +1,6 @@
 # deConcesionariasChallenge
 
 > Challenge hecho para deConcesionarias por Federico Silva
----
 
 - El challenge consiste en la implementación de una WebAPI en ExpressJS, con una base de
 datos en PostgreSQL y una aplicación de ReactJS que consuma dicha WebAPI.
@@ -13,8 +12,5 @@ dentro de una categoría y las mismas se usan en la aplicación para separar las
 ---
 
 > Repositorio: https://github.com/Serteyf/deConcesionariasChallenge
-> Domain: 
+> Domain: https://de-concesionarias.herokuapp.com/
 
-Missing functionalities:
-- Correcto manejo del rating
-- Validacion para agregar propiedades y vehiculos
